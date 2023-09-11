@@ -53,13 +53,13 @@ post {
             post {
     success {
         mail to: "nirmaldj2001@gmail.com",
-        subject: "Security scan completed",
+        subject: "Testing completed",
         
         body: "Status: SUCCESS"
     }
     failure {
         mail to: "nirmaldj2001@gmail.com",
-        subject: "Security scan completed",
+        subject: "Testing completed",
         
         body: "Status: FAILURE"
     }}
