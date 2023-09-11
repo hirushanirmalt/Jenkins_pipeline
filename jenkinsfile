@@ -1,79 +1,68 @@
 pipeline {
     agent any
-    
-
-    stages {
-            stage("Build") {
-            steps {
-               echo "building is automated by apache maven"
-            }}
-        
-            stage("Unit and Integration Tests") {
-                steps {
-                   echo "Unit and Integration Tests is done by TestComplete"
-            } }
-        
-            stage("Code Analysis") {
-                steps {
-                   echo "Code Analysis is done by PMD "
-            } }
-        
-           stage("Security Scan") {
-    steps {
-        echo "Security Scan is done by snyk security"
-    }
-
-
-post {
-    success {
-        mail to: "nirmaldj2001@gmail.com",
-        subject: "Security scan completed",
-        
-        body: "Status: SUCCESS"
-    }
-    failure {
-        mail to: "nirmaldj2001@gmail.com",
-        subject: "Security scan completed",
-        
-        body: "Status: FAILURE"
+    stages{
+        stage('Build') {
+            steps{
+                echo "building is automated by apache maven"
+            }
+        }
+        stage('Unit and Integration Tests') {
+            steps{
+                echo "Unit and Integration Tests is done by TestComplete"
+            }
+            post{
+                success{
+                    emailext to: "nirmaldj2001@gmail.com",
+                    subject: "Test complete",
+                    body: "Status:SUCCESS",
+                    attachLog: true
+                }
+                failure{
+                    emailext to: "nirmaldj2001@gmail.com",
+                    subject: "Test completed",
+                    body: "Status:FALIURE",
+                    attachLog: true
+                }
+            }
+        }
+        stage('Code Analysis') {
+            steps{
+                echo "Code Analysis is done by PMD"
+            }
+        }
+        stage('Security Scan') {
+            steps{
+                echo "Security Scan is done by snyk security"
+            }
+            post{
+                success{
+                    emailext to: "nirmaldj2001@gmail.com",
+                    subject: "Security scan completed",
+                    body: "Status:SUCCESS",
+                    attachLog: true
+                }
+                failure{
+                    emailext to: "nirmaldj2001@gmail.com",
+                    subject: "Security scan completed",
+                    body: "Status:FALIURE",
+                    attachLog: true
+                }
+            }
+        }
+        stage('Deploy to Staging') {
+            steps{
+                echo "Deploy to Staging is done through AWS EC2 instance"
+            }
+        }
+        stage('Integration Tests on Staging') {
+            steps{
+                echo "To do Integration tests on the staging JUnit is used"
+            }
+        }
+        stage('Deploy to Production') {
+            steps{
+                echo "Deployment is done through AWS EC2 instance serve"
+            }
+        }
     }
 }
-           }
-        
-            stage("Deploy to Staging") {
-                steps {
-                   echo "Deploy to Staging is done through AWS EC2 instance"
-            }
-            }
-        
-        stage("Integration Tests on Staging") {
-            steps {
-               echo "Integration Tests on Staging "
-            }
-            post {
-    success {
-        mail to: "nirmaldj2001@gmail.com",
-        subject: "Testing completed",
-        
-        body: "Status: SUCCESS"
-    }
-    failure {
-        mail to: "nirmaldj2001@gmail.com",
-        subject: "Testing completed",
-        
-        body: "Status: FAILURE"
-    }}
-        }
-         stage("Deploy to Production") {
-            
-            steps {
-               echo "Deployment is done through AWS EC2 instance server"
-            }}
-
-      
-
-        
-        }
-}
-        
-        
