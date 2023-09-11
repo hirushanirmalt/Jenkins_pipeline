@@ -21,7 +21,21 @@ pipeline {
             stage("Security Scan") {
                 steps {
                        echo "Security Scan is done by snyk security"
-            } 
+
+            } post{
+                ${BUILD_LOG_REGEX, regex="(?s)(?m)^.*$", escapeHtml=true}
+
+                success{
+                    mail to:"nirmaldj2001@gmail.com"
+                    subject:"Security scan completed"
+                    body: "Status:SUCCESS"
+                }
+                failure{
+                    mail to:"nirmaldj2001@gmail.com"
+                    subject:"Security scan completed"
+                    body: "Status:Faliure"
+                }
+            }
     
             }
         
