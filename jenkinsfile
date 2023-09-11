@@ -49,7 +49,21 @@ post {
         stage("Integration Tests on Staging") {
             steps {
                echo "Integration Tests on Staging "
-            }}
+            }
+post {
+    success {
+        mail to: "nirmaldj2001@gmail.com",
+        subject: "Testing completed",
+        
+        body: "Status: SUCCESS"
+    }
+    failure {
+        mail to: "nirmaldj2001@gmail.com",
+        subject: "Testing completed",
+        
+        body: "Status: FAILURE"
+    }
+}
            
          stage("Deploy to Production") {
             
