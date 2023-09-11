@@ -22,7 +22,7 @@ pipeline {
     steps {
         echo "Security Scan is done by snyk security"
     }
-}
+
 
 post {
     success {
@@ -38,7 +38,7 @@ post {
         body: "Status: FAILURE"
     }
 }
-
+           }
         
             stage("Deploy to Staging") {
                 steps {
