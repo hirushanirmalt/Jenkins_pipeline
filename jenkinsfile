@@ -42,16 +42,10 @@ pipeline {
                echo "Deployment is done through AWS EC2 instance server"
             }}
 
-        post{
-                success{
-                    mail to:"nirmaldj2001@gmail.com",
-                    subject:"Build status emil",
-                    body: "Build Successful!"
-                }
-            
+      
 
         }
         }
-        }
+        
         
         
