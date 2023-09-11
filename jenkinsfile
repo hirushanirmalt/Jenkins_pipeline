@@ -23,7 +23,7 @@ pipeline {
                        echo "Security Scan is done by snyk security"
 
             } post{
-              
+                
 
                 success{
                     mail to:"nirmaldj2001@gmail.com"
