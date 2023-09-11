@@ -18,7 +18,7 @@ pipeline {
                    echo "Code Analysis is done by PMD "
             } 
         stages {
-            stage(Security Scan") {
+            stage("Security Scan") {
                 steps {
                        echo "Security Scan is done by snyk security"
             } 
