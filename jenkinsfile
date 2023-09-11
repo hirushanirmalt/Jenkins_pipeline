@@ -23,7 +23,7 @@ pipeline {
                        echo "Security Scan is done by snyk security"
 
             } post{
-                ${BUILD_LOG_REGEX, regex="(?s)(?m)^.*$", escapeHtml=true}
+              
 
                 success{
                     mail to:"nirmaldj2001@gmail.com"
