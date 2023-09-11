@@ -28,13 +28,13 @@ post {
     success {
         mail to: "nirmaldj2001@gmail.com",
         subject: "Security scan completed",
-        attachLog: true,
+        
         body: "Status: SUCCESS"
     }
     failure {
         mail to: "nirmaldj2001@gmail.com",
         subject: "Security scan completed",
-        attachLog: true,
+        
         body: "Status: FAILURE"
     }
 }
