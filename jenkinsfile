@@ -28,13 +28,13 @@ post {
     success {
         mail to: "nirmaldj2001@gmail.com",
         subject: "Security scan completed",
-        
+        attachLog: true,
         body: "Status: SUCCESS"
     }
     failure {
         mail to: "nirmaldj2001@gmail.com",
         subject: "Security scan completed",
-        
+        attachLog: true,
         body: "Status: FAILURE"
     }
 }
@@ -50,20 +50,19 @@ post {
             steps {
                echo "Integration Tests on Staging "
             }
-post {
+            post {
     success {
         mail to: "nirmaldj2001@gmail.com",
-        subject: "Testing completed",
+        subject: "Security scan completed",
         
         body: "Status: SUCCESS"
     }
     failure {
         mail to: "nirmaldj2001@gmail.com",
-        subject: "Testing completed",
+        subject: "Security scan completed",
         
         body: "Status: FAILURE"
-    }
-}
+    }}
            
          stage("Deploy to Production") {
             
@@ -75,6 +74,6 @@ post {
 
         }
         }
-        
+}
         
         
