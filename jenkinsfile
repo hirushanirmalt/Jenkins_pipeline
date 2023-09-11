@@ -18,26 +18,27 @@ pipeline {
                    echo "Code Analysis is done by PMD "
             } }
         
-            stage("Security Scan") {
-                steps {
-                       echo "Security Scan is done by snyk security"
+           stage("Security Scan") {
+    steps {
+        echo "Security Scan is done by snyk security"
+    }
+}
 
-            } post{
-                
+post {
+    success {
+        mail to: "nirmaldj2001@gmail.com",
+        subject: "Security scan completed",
+        attachLog: true,
+        body: "Status: SUCCESS"
+    }
+    failure {
+        mail to: "nirmaldj2001@gmail.com",
+        subject: "Security scan completed",
+        attachLog: true,
+        body: "Status: FAILURE"
+    }
+}
 
-                success{
-                    mail to:"nirmaldj2001@gmail.com",
-                    subject:"Security scan completed",
-                    body: "Status:SUCCESS"
-                }
-                failure{
-                    mail to:"nirmaldj2001@gmail.com",
-                    subject:"Security scan completed",
-                    body: "Status:Faliure"
-                }
-            }
-    
-            }
         
             stage("Deploy to Staging") {
                 steps {
