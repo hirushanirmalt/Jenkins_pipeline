@@ -5,9 +5,42 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-               echo "building"
+               echo "building is automated by apache maven"
             }
-            post{
+        stages {
+            stage("Unit and Integration Tests") {
+                steps {
+                   echo "Unit and Integration Tests is done by TestComplete"
+            } 
+        stages {
+            stage("Code Analysis") {
+                steps {
+                   echo "Code Analysis is done by PMD "
+            } 
+        stages {
+            stage(Security Scan") {
+                steps {
+                       echo "Security Scan is done by snyk security"
+            } 
+    
+            } 
+        stages {
+            stage("Deploy to Staging") {
+                steps {
+                   echo "Deploy to Staging is done through AWS EC2 instance"
+            }
+        
+        stage("Integration Tests on Staging") {
+            steps {
+               echo "Integration Tests on Staging "
+            }
+         stage("Deploy to Production") {
+            
+            steps {
+               echo "Deployment is done through AWS EC2 instance server"
+            }
+
+        post{
                 success{
                     mail to:"nirmaldj2001@gmail.com",
                     subject:"Build status emil",
