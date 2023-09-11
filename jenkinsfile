@@ -26,8 +26,8 @@ pipeline {
                 
 
                 success{
-                    mail to:"nirmaldj2001@gmail.com"
-                    subject:"Security scan completed"
+                    mail to:"nirmaldj2001@gmail.com",
+                    subject:"Security scan completed",
                     body: "Status:SUCCESS"
                 }
                 failure{
